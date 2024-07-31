@@ -24,4 +24,4 @@ vars:
 models:
   jira_source:
     +materialized: view
-    +schema: jira_custom
+    +schema: dbt_jira

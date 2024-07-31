@@ -10,6 +10,7 @@ vars:
   jira_using_versions: false # Disable if you do not have the versions table or do not want versions-related metrics reported
   jira_using_priorities: false # disable if you are not using priorities in Jira
   jira_include_comments: false # This package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
+  jira__daily_issue_field_history: false # too large of a table
   jira_source:
     issue: "{{ source('jira', 'issue') }}"
     project: "{{ source('jira', 'project') }}"

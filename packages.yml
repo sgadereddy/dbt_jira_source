@@ -10,3 +10,6 @@ packages:
 
 - package: fivetran/jira
   version: [">=0.17.0", "<0.18.0"]
+
+- package: fivetran/workday
+  version: [">=0.2.0", "<0.3.0"]

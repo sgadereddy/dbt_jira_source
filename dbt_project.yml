@@ -11,7 +11,7 @@ vars:
   jira_using_priorities: false # disable if you are not using priorities in Jira
   jira_include_comments: false # This package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
   jira__daily_issue_field_history: false # too large of a table
-  jira_source:
+  jira_transformation:
     issue: "{{ source('jira', 'issue') }}"
     project: "{{ source('jira', 'project') }}"
     user: "{{ source('jira', 'user') }}"

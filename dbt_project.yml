@@ -30,10 +30,15 @@ vars:
     sprint: "{{ source('jira', 'sprint') }}"
     version: "{{ source('jira', 'version') }}"
 
-    workday_database: LANDING
-    workday_schema: DBT_WORKDAY
+  workday_database: LANDING
+  workday_schema: DBT_WORKDAY
+
 models:
   jira_source:
     +schema: dbt_jira
   jira:
     +schema: dbt_jira
+  workday:
+    +schema: DBT_WORKDAY
+  staging:
+    +schema: DBT_WORKDAY

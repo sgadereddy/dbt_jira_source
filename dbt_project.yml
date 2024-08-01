@@ -34,10 +34,10 @@ vars:
   workday_schema: DBT_WORKDAY
 
 models:
-#  jira_source:
-#    +schema: dbt_jira
- # jira:
-  #  +schema: dbt_jira
+  jira_source:
+    schema: dbt_jira
+  jira:
+    schema: dbt_jira
   workday:
     +schema: DBT_WORKDAY
   staging:

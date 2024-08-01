@@ -4,7 +4,7 @@ config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   jira_database: LANDING
-  jira_schema: DBT_JIRA
+  #jira_schema: DBT_JIRA
   jira_using_sprints: false   # Disable if you do not have the sprint table or do not want sprint-related metrics reported
   jira_using_components: false # Disable if you do not have the component table or do not want component-related metrics reported
   jira_using_versions: false # Disable if you do not have the versions table or do not want versions-related metrics reported

@@ -40,5 +40,5 @@ models:
     schema: jira
   workday:
     +schema: DBT_WORKDAY
-  staging:
-    +schema: DBT_WORKDAY
+    staging:
+      +schema: DBT_WORKDAY

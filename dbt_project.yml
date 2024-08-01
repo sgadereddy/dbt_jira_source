@@ -10,9 +10,10 @@ vars:
   jira_using_components: false # Disable if you do not have the component table or do not want component-related metrics reported
   jira_using_versions: false # Disable if you do not have the versions table or do not want versions-related metrics reported
   jira_using_priorities: false # disable if you are not using priorities in Jira
-  jira_include_comments: false # This package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
+  #jira_include_comments: false # This package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
   jira__daily_issue_field_history: false # too large of a table
-  jira_transformation:
+  
+  jira_source:
     issue: "{{ source('jira', 'issue') }}"
     project: "{{ source('jira', 'project') }}"
     user: "{{ source('jira', 'user') }}"
@@ -21,6 +22,9 @@ vars:
     status_category: "{{ source('jira', 'status_category') }}"
     resolution: "{{ source('jira', 'resolution') }}"
     priority: "{{ source('jira', 'priority') }}"
+    issue_multiselect_history: "{{ source('jira', 'issue_multiselect_history') }}"
+    issue_field_history: "{{ source('jira', 'issue_field_history') }}"
+    comment: "{{ source('jira', 'comment') }}"
     issue_link: "{{ source('jira', 'issue_link') }}"
     component: "{{ source('jira', 'component') }}"
     field: "{{ source('jira', 'field') }}"
@@ -28,8 +32,30 @@ vars:
     sprint: "{{ source('jira', 'sprint') }}"
     version: "{{ source('jira', 'version') }}"
 
+  jira:
+    issue: "{{ ref('stg_jira__issue') }}"
+    project: "{{ ref('stg_jira__project') }}"
+    user: "{{ ref('stg_jira__user') }}"
+    issue_type: "{{ ref('stg_jira__issue_type') }}"
+    status: "{{ ref('stg_jira__status') }}"
+    status_category: "{{ ref('stg_jira__status_category') }}"
+    resolution: "{{ ref('stg_jira__resolution') }}"
+    priority: "{{ ref('stg_jira__priority') }}"
+    issue_multiselect_history: "{{ ref('stg_jira__issue_multiselect_history') }}"
+    issue_field_history: "{{ ref('stg_jira__issue_field_history') }}"
+    comment: "{{ ref('stg_jira__comment') }}"
+    issue_link: "{{ ref('stg_jira__issue_link') }}"
+    component: "{{ ref('stg_jira__component') }}"
+    field: "{{ ref('stg_jira__field') }}"
+    field_option: "{{ ref('stg_jira__field_option') }}"
+    sprint: "{{ ref('stg_jira__sprint') }}"
+    version: "{{ ref('stg_jira__version') }}"
+    jira_issue_history_buffer: 1
+    
 models:
   jira_source:
+    +materialized: view
     #schema: jira
   jira:
     #schema: jira
+    +materialized: view

@@ -14,26 +14,7 @@ vars:
   jira_using_versions: false # Disable if you do not have the versions table or do not want versions-related metrics reported
   jira_using_priorities: false # disable if you are not using priorities in Jira
   #jira_include_comments: false # This package aggregates issue comments so that you have a single view of all your comments in the jira__issue_enhanced table. This can cause limit errors if you have a large dataset. Disable to remove this functionality.
-  jira__daily_issue_field_history: false # too large of a table
-  
-  jira_source:
-    issue: "{{ source('jira', 'issue') }}"
-    project: "{{ source('jira', 'project') }}"
-    user: "{{ source('jira', 'user') }}"
-    issue_type: "{{ source('jira', 'issue_type') }}"
-    status: "{{ source('jira', 'status') }}"
-    status_category: "{{ source('jira', 'status_category') }}"
-    resolution: "{{ source('jira', 'resolution') }}"
-    priority: "{{ source('jira', 'priority') }}"
-    issue_multiselect_history: "{{ source('jira', 'issue_multiselect_history') }}"
-    issue_field_history: "{{ source('jira', 'issue_field_history') }}"
-    comment: "{{ source('jira', 'comment') }}"
-    issue_link: "{{ source('jira', 'issue_link') }}"
-    component: "{{ source('jira', 'component') }}"
-    field: "{{ source('jira', 'field') }}"
-    field_option: "{{ source('jira', 'field_option') }}"
-    sprint: "{{ source('jira', 'sprint') }}"
-    version: "{{ source('jira', 'version') }}"
+  #jira__daily_issue_field_history: false # too large of a table
 
   jira:
     issue: "{{ ref('stg_jira__issue') }}"
@@ -56,9 +37,6 @@ vars:
     jira_issue_history_buffer: 1
     
 models:
-  jira_source:
-    +materialized: view
-    schema: jira
   jira:
     schema: jira
     +materialized: view

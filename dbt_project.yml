@@ -55,7 +55,11 @@ vars:
 models:
   jira_source:
     +materialized: view
-    #schema: jira
+    schema: jira
   jira:
-    #schema: jira
+    schema: jira
     +materialized: view
+  workday:
+    +schema: workday # leave blank for just the target_schema
+    staging:
+        +schema: workday # leave blank for just the target_schema
